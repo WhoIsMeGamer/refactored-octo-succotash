@@ -1,279 +1,579 @@
-Элемент        Описание
-
-<!--...-->     Комментарий в коде - не отображается на странице.
-               Используется для заметок разработчикам.
-
-<!DOCTYPE>     Объявляет тип документа и версию HTML для браузера.
-               Должен быть первой строкой в документе.
-
-<a>            Создаёт гипертекстовые ссылки.
-Дополнительные теги: href, target, download
-
-<abbr>         Определяет аббревиатуру. Атрибут title показывает расшифровку
-               при наведении курсора.
-Дополнительные теги: title
-
-<address>      Контактные данные автора/владельца документа.
-               Отображается курсивом.
-
-<area>         Активная область на изображении-карте. Всегда внутри <map>.
-Дополнительные теги: shape, coords, href, alt
-
-<article>      Независимый раздел контента: статья, запись блога, новость.
-
-<aside>        Боковая панель или дополнительный контент,
-               связанный с основному содержанию.
-
-<audio>        Встраивает аудиоплеер. Поддерживает MP3, WAV, OGG.
-Дополнительные теги: src, controls, autoplay, loop
-
-<b>            Выделяет текст жирным без придания важности.
-               Для важного текста используйте <strong>.
-
-<base>         Задает базовый URL для всех относительных ссылок на странице.
-Дополнительные теги: href, target
-
-<bdi>          Изолирует текст с направлением написания справа налево
-               (например, арабский, иврит).
-Дополнительные теги: dir
-
-<bdo>          Принудительно меняет направление текста.
-Дополнительные теги: dir
-
-<blockquote>   Выделяет длинную цитату с отступами.
-Дополнительные теги: cite
-
-<body>         Тело документа - всё видимое содержимое страницы.
-
-<br>           Перенос строки без создания нового абзаца.
-
-<button>       Интерактивная кнопка. Может содержать текст или изображение.
-Дополнительные теги: type, disabled
-
-<canvas>       Область для рисования графики через JavaScript.
-               Используется для игр, диаграмм, анимаций.
-Дополнительные теги: width, height
-
-<caption>      Заголовок таблицы. Размещается сразу после <table>.
-
-<cite>         Источник цитирования. Отображается курсивом.
-
-<code>         Фрагмент программного кода. Моноширинный шрифт.
-
-<col>          Задает свойства для столбцов таблицы.
-Дополнительные теги: span
-
-<colgroup>     Группирует столбцы таблицы для совместного форматирования.
-Дополнительные теги: span
-
-<data>         Связывает содержимое с машиночитаемым значением.
-Дополнительные теги: value
-
-<datalist>     Список предопределенных вариантов для поля ввода <input>.
-Дополнительные теги: id
-
-<dd>           Описание термина в списке определений <dl>.
-
-<del>          Помечает текст как удаленный (перечёркивание).
-Дополнительные теги: cite, datetime
-
-<details>      Сворачиваемый блок с дополнительной информацией.
-               Заголовок задается в <summary>.
-Дополнительные теги: open
-
-<dfn>          Термин, который определяется в текущем контексте. Курсив.
-Дополнительные теги: title
-
-<dialog>       Всплывающее диалоговое окно.
-Дополнительные теги: open
-
-<div>          Универсальный блочный контейнер для группировки элементов
-               и применения стилей.
-
-<dl>           Список определений (термин + описание).
-
-<dt>           Термин в списке определений <dl>.
-
-<em>           Выделяет важный текст курсивом.
-
-<embed>        Встраивает внешний контент или плагин.
-Дополнительные теги: src, type, width, height
-
-<fieldset>     Группирует связанные поля формы с рамкой.
-Дополнительные теги: disabled, form
-
-<figcaption>   Подпись к изображению или диаграмме в <figure>.
-
-<figure>       Контейнер для иллюстраций, диаграмм, фото с подписью.
-
-<footer>       Нижний колонтитул документа или раздела.
-
-<form>         Форма для отправки данных на сервер.
-Дополнительные теги: action, method, enctype, target
-
-<h1>-<h6>      Заголовки шести уровней. h1 - самый важный.
-
-<head>         Служебный раздел с метаданными, заголовком, стилями, скриптами.
-
-<header>       Вводная часть страницы или раздела (лого, навигация).
-
-<hr>           Горизонтальная линия-разделитель тематических блоков.
-
-<html>         Корневой элемент всего HTML-документа.
-Дополнительные теги: lang
-
-<i>            Выделяет текст курсивом без придания важности.
-               Для важного текста используйте <em>.
-
-<iframe>       Встраивает другую веб-страницу в текущую.
-Дополнительные теги: src, width, height, frameborder
-
-<img>          Вставляет изображение.
-Дополнительные теги: src, alt, width, height, loading
-
-<input>        Поле для ввода данных разных типов.
-Дополнительные теги: type, name, value, placeholder, required
-
-<ins>          Помечает текст как добавленный (подчёркивание).
-Дополнительные теги: cite, datetime
-
-<kbd>          Текст, вводимый с клавиатуры. Моноширинный шрифт.
-
-<label>        Подпись к элементу формы. Улучшает доступность.
-Дополнительные теги: for
-
-<legend>       Заголовок для группы полей <fieldset>.
-
-<li>           Элемент маркированного или нумерованного списка.
-Дополнительные теги: value
-
-<link>         Подключает внешние ресурсы (чаще всего CSS-стили).
-Дополнительные теги: rel, href, type
-
-<main>         Основное уникальное содержимое страницы. Один на страницу.
-
-<map>          Контейнер для активных областей изображения (<area>).
-Дополнительные теги: name
-
-<mark>         Выделяет текст желтым фоном (как маркером).
-
-<meta>         Мета-информация для браузеров и поисковых систем.
-Дополнительные теги: charset, name, content, http-equiv
-
-<meter>        Индикатор измерения в заданном диапазоне.
-Дополнительные теги: value, min, max, low, high, optimum
-
-<nav>          Навигационное меню по сайту.
-
-<noscript>     Содержимое показывается, если JavaScript отключен.
-
-<object>       Встраивает мультимедиа (PDF, Flash, видео).
-Дополнительные теги: data, type, width, height
-
-<ol>           Упорядоченный (нумерованный) список.
-Дополнительные теги: type, start, reversed
-
-<optgroup>     Группа вариантов в выпадающем списке с заголовком.
-Дополнительные теги: label, disabled
-
-<option>       Вариант в выпадающем списке <select>.
-Дополнительные теги: value, selected, disabled
-
-<output>       Поле для вывода результата вычислений.
-Дополнительные теги: for, name
-
-<p>            Абзац текста с отступами сверху и снизу.
-
-<param>        Параметры для плагинов в <object>.
-Дополнительные теги: name, value
-
-<picture>      Адаптивный контейнер для изображений с разными версиями.
-
-<pre>          Текст с сохранением пробелов и переносов. Для кода.
-
-<progress>     Индикатор выполнения задачи (например, загрузки).
-Дополнительные теги: value, max
-
-<q>            Краткая цитата в строке. Автоматически добавляет кавычки.
-Дополнительные теги: cite
-
-<ruby>         Аннотация для восточноазиатских символов.
-
-<rb>           Базовый текст в ruby-аннотации.
-
-<rt>           Аннотация над или под базовым текстом в <ruby>.
-
-<rtc>          Дополнительная аннотация в <ruby>.
-
-<rp>           Резервный текст для браузеров без поддержки ruby.
-
-<s>            Зачёркнутый текст (устаревшая информация).
-
-<samp>         Пример вывода компьютерной программы. Моноширинный шрифт.
-
-<script>       Подключает или содержит JavaScript-код.
-Дополнительные теги: src, type, async, defer
-
-<section>      Логический раздел документа с заголовком.
-
-<select>       Выпадающий список с вариантами <option>.
-Дополнительные теги: name, multiple, size, disabled
-
-<small>        Мелкий текст (например, юридическая информация).
-
-<source>       Альтернативные источники медиа для <picture>, <video>, <audio>.
-Дополнительные теги: src, type, media, srcset
-
-<span>         Универсальный строчный контейнер для стилизации текста.
-
-<strong>       Важный текст с сильным акцентом. Жирное начертание.
-
-<style>        Встроенные CSS-стили для текущей страницы.
-Дополнительные теги: type, media
-
-<sub>          Подстрочное написание (H₂O).
-
-<summary>      Заголовок для сворачиваемого блока <details>.
-
-<sup>          Надстрочное написание (x²).
-
-<table>        Таблица для структурирования данных.
-Дополнительные теги: border, cellpadding, cellspacing
-
-<tbody>        Основное тело таблицы (содержимое).
-
-<td>           Ячейка таблицы с данными.
-Дополнительные теги: colspan, rowspan
-
-<template>     Шаблон для клонирования через JavaScript.
-
-<textarea>     Многострочное поле для ввода текста.
-Дополнительные теги: name, rows, cols, placeholder, maxlength
-
-<tfoot>        Нижний колонтитул таблицы.
-
-<th>           Заголовочная ячейка таблицы. Жирное начертание.
-Дополнительные теги: colspan, rowspan, scope
-
-<thead>        Заголовок таблицы с колонками.
-
-<time>         Дата и/или время в машиночитаемом формате.
-Дополнительные теги: datetime
-
-<title>        Заголовок страницы (отображается во вкладке браузера).
-
-<tr>           Строка таблицы.
-
-<track>        Субтитры для <video> и <audio>.
-Дополнительные теги: src, kind, srclang, label
-
-<u>            Подчёркнутый текст (без семантического значения).
-
-<ul>           Неупорядоченный (маркированный) список.
-
-<var>          Переменная в математическом выражении или коде. Курсив.
-
-<video>        Видеоплеер. Поддерживает MP4, WebM, OGG.
-Дополнительные теги: src, controls, width, height, autoplay, muted
-
-<wbr>          Возможное место разрыва длинного слова.
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Теги - Полный справочник</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .search-box {
+            max-width: 500px;
+            margin: 30px auto;
+        }
+        
+        #searchInput {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            outline: none;
+        }
+        
+        .tags-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .tag-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #667eea;
+        }
+        
+        .tag-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .tag-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .tag-description {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .tag-attributes {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #764ba2;
+        }
+        
+        .attributes-title {
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .attributes-list {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #555;
+        }
+        
+        .required {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        .no-attributes {
+            color: #999;
+            font-style: italic;
+        }
+        
+        .category {
+            background: rgba(255,255,255,0.95);
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin: 30px 0 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .category h2 {
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: white;
+            padding: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .tags-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 HTML Теги</h1>
+            <p class="subtitle">Полный справочник с описаниями и атрибутами</p>
+            
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Поиск тегов...">
+            </div>
+        </header>
+
+        <main>
+            <div class="category">
+                <h2>📄 Основные теги документа</h2>
+                <div class="tags-grid">
+                    <!-- Основные теги документа -->
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;!DOCTYPE&gt;</div>
+                        <div class="tag-description">Объявляет тип документа и версию HTML. Должен быть первой строкой.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;html&gt;</div>
+                        <div class="tag-description">Корневой элемент всего HTML-документа.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list">lang</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;head&gt;</div>
+                        <div class="tag-description">Служебный раздел с метаданными, заголовком, стилями, скриптами.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;body&gt;</div>
+                        <div class="tag-description">Тело документа - всё видимое содержимое страницы.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category">
+                <h2>📝 Текстовые теги</h2>
+                <div class="tags-grid">
+                    <!-- Текстовые теги -->
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;h1&gt;-&lt;h6&gt;</div>
+                        <div class="tag-description">Заголовки шести уровней. h1 - самый важный.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;p&gt;</div>
+                        <div class="tag-description">Абзац текста с отступами сверху и снизу.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;span&gt;</div>
+                        <div class="tag-description">Универсальный строчный контейнер для стилизации текста.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;br&gt;</div>
+                        <div class="tag-description">Перенос строки без создания нового абзаца.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;strong&gt;</div>
+                        <div class="tag-description">Важный текст с сильным акцентом. Жирное начертание.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;em&gt;</div>
+                        <div class="tag-description">Выделяет важный текст курсивом.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category">
+                <h2>🖼️ Медиа и ссылки</h2>
+                <div class="tags-grid">
+                    <!-- Медиа теги -->
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;a&gt;</div>
+                        <div class="tag-description">Создаёт гипертекстовые ссылки.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list"><span class="required">href</span>, target, download</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;img&gt;</div>
+                        <div class="tag-description">Вставляет изображение.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list"><span class="required">src</span>, alt, width, height, loading</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;video&gt;</div>
+                        <div class="tag-description">Видеоплеер. Поддерживает MP4, WebM, OGG.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list"><span class="required">src</span>, controls, width, height, autoplay, muted</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;audio&gt;</div>
+                        <div class="tag-description">Встраивает аудиоплеер. Поддерживает MP3, WAV, OGG.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list"><span class="required">src</span>, controls, autoplay, loop</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category">
+                <h2>📊 Формы и ввод данных</h2>
+                <div class="tags-grid">
+                    <!-- Формы -->
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;form&gt;</div>
+                        <div class="tag-description">Форма для отправки данных на сервер.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list"><span class="required">action</span>, method, enctype, target</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;input&gt;</div>
+                        <div class="tag-description">Поле для ввода данных разных типов.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list">type, name, value, placeholder, required</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;textarea&gt;</div>
+                        <div class="tag-description">Многострочное поле для ввода текста.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list">name, rows, cols, placeholder, maxlength</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;button&gt;</div>
+                        <div class="tag-description">Интерактивная кнопка. Может содержать текст или изображение.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list">type, disabled</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;select&gt;</div>
+                        <div class="tag-description">Выпадающий список с вариантами &lt;option&gt;.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list">name, multiple, size, disabled</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;label&gt;</div>
+                        <div class="tag-description">Подпись к элементу формы. Улучшает доступность.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list">for</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category">
+                <h2>🏗️ Структурные теги</h2>
+                <div class="tags-grid">
+                    <!-- Структурные теги -->
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;div&gt;</div>
+                        <div class="tag-description">Универсальный блочный контейнер для группировки элементов и применения стилей.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;header&gt;</div>
+                        <div class="tag-description">Вводная часть страницы или раздела (лого, навигация).</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;main&gt;</div>
+                        <div class="tag-description">Основное уникальное содержимое страницы. Один на страницу.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;footer&gt;</div>
+                        <div class="tag-description">Нижний колонтитул документа или раздела.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;section&gt;</div>
+                        <div class="tag-description">Логический раздел документа с заголовком.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;article&gt;</div>
+                        <div class="tag-description">Независимый раздел контента: статья, запись блога, новость.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;nav&gt;</div>
+                        <div class="tag-description">Навигационное меню по сайту.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;aside&gt;</div>
+                        <div class="tag-description">Боковая панель или дополнительный контент, связанный с основным содержанием.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category">
+                <h2>📋 Списки и таблицы</h2>
+                <div class="tags-grid">
+                    <!-- Списки и таблицы -->
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;ul&gt;</div>
+                        <div class="tag-description">Неупорядоченный (маркированный) список.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;ol&gt;</div>
+                        <div class="tag-description">Упорядоченный (нумерованный) список.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list">type, start, reversed</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;li&gt;</div>
+                        <div class="tag-description">Элемент маркированного или нумерованного списка.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list">value</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;table&gt;</div>
+                        <div class="tag-description">Таблица для структурирования данных.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list">border, cellpadding, cellspacing</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;tr&gt;</div>
+                        <div class="tag-description">Строка таблицы.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;td&gt;</div>
+                        <div class="tag-description">Ячейка таблицы с данными.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list">colspan, rowspan</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;th&gt;</div>
+                        <div class="tag-description">Заголовочная ячейка таблицы. Жирное начертание.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list">colspan, rowspan, scope</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category">
+                <h2>⚙️ Служебные теги</h2>
+                <div class="tags-grid">
+                    <!-- Служебные теги -->
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;meta&gt;</div>
+                        <div class="tag-description">Мета-информация для браузеров и поисковых систем.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list">charset, name, content, http-equiv</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;link&gt;</div>
+                        <div class="tag-description">Подключает внешние ресурсы (чаще всего CSS-стили).</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list"><span class="required">rel</span>, href, type</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;style&gt;</div>
+                        <div class="tag-description">Встроенные CSS-стили для текущей страницы.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list">type, media</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;script&gt;</div>
+                        <div class="tag-description">Подключает или содержит JavaScript-код.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">Дополнительные теги:</div>
+                            <div class="attributes-list">src, type, async, defer</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <div class="tag-name">&lt;!--...--&gt;</div>
+                        <div class="tag-description">Комментарий в коде - не отображается на странице.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>HTML Теги &copy; 2024 - Полный справочник для разработчиков</p>
+        </footer>
+    </div>
+
+    <script>
+        // Поиск по тегам
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const tagCards = document.querySelectorAll('.tag-card');
+            
+            tagCards.forEach(card => {
+                const tagName = card.querySelector('.tag-name').textContent.toLowerCase();
+                const tagDescription = card.querySelector('.tag-description').textContent.toLowerCase();
+                
+                if (tagName.includes(searchTerm) || tagDescription.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
