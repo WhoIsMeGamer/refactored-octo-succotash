@@ -4,47 +4,375 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📚 Полный справочник HTML тегов</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🚀 HTML Теги</h1>
-            <p class="subtitle">Полный интерактивный справочник со всеми тегами</p>
-            
-            <div class="stats">
-                <div class="stat-item">📚 <span id="totalTags">0</span> тегов</div>
-                <div class="stat-item">🎯 С примерами кода</div>
-                <div class="stat-item">⚡ Быстрый поиск</div>
-                <div class="stat-item">📱 Адаптивный дизайн</div>
-            </div>
-            
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="🔍 Начните вводить название тега...">
-            </div>
+    <h1>🚀 HTML Теги - Полный справочник</h1>
+    
+    <h2>📄 Основные теги документа</h2>
+    
+    <h3>&lt;!DOCTYPE&gt;</h3>
+    <p><strong>Описание:</strong> Объявляет тип документа и версию HTML. Должен быть первой строкой.</p>
+    <p><strong>Атрибуты:</strong> Нет</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Мой сайт&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    Содержимое страницы
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    <p><strong>Результат:</strong> Определяет документ как HTML5</p>
+    <hr>
 
-            <div class="quick-nav">
-                <button class="nav-btn" onclick="scrollToCategory('basic')">📄 Основные</button>
-                <button class="nav-btn" onclick="scrollToCategory('text')">📝 Текст</button>
-                <button class="nav-btn" onclick="scrollToCategory('media')">🖼️ Медиа</button>
-                <button class="nav-btn" onclick="scrollToCategory('forms')">📊 Формы</button>
-                <button class="nav-btn" onclick="scrollToCategory('structure')">🏗️ Структура</button>
-                <button class="nav-btn" onclick="scrollToCategory('lists')">📋 Списки</button>
-                <button class="nav-btn" onclick="scrollToCategory('tables')">📊 Таблицы</button>
-                <button class="nav-btn" onclick="scrollToCategory('scripting')">⚙️ Скрипты</button>
-            </div>
-        </header>
+    <h3>&lt;html&gt;</h3>
+    <p><strong>Описание:</strong> Корневой элемент всего HTML-документа.</p>
+    <p><strong>Атрибуты:</strong> lang</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;title&gt;Заголовок&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    Контент страницы
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+    <p><strong>Результат:</strong> Создает основу HTML документа</p>
+    <hr>
 
-        <main id="tagsContainer">
-            <!-- Все теги будут добавлены через JavaScript -->
-        </main>
+    <h3>&lt;head&gt;</h3>
+    <p><strong>Описание:</strong> Служебный раздел с метаданными, заголовком, стилями, скриптами.</p>
+    <p><strong>Атрибуты:</strong> Нет</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;head&gt;
+    &lt;title&gt;Мой сайт&lt;/title&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</pre>
+    <p><strong>Результат:</strong> Содержит служебную информацию о странице</p>
+    <hr>
 
-        <footer>
-            <p>🎯 Полный справочник HTML тегов &copy;</p>
-            <p>💡 Нажмите на любой тег для получения подробной информации</p>
-        </footer>
+    <h3>&lt;body&gt;</h3>
+    <p><strong>Описание:</strong> Тело документа - всё видимое содержимое страницы.</p>
+    <p><strong>Атрибуты:</strong> Нет</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;body&gt;
+    &lt;h1&gt;Добро пожаловать!&lt;/h1&gt;
+    &lt;p&gt;Это содержимое страницы.&lt;/p&gt;
+&lt;/body&gt;</pre>
+    <p><strong>Результат:</strong> Отображает основной контент страницы</p>
+    <hr>
+
+    <h2>📝 Текстовые теги</h2>
+
+    <h3>&lt;h1&gt; - &lt;h6&gt;</h3>
+    <p><strong>Описание:</strong> Заголовки шести уровней. h1 - самый важный.</p>
+    <p><strong>Атрибуты:</strong> Нет</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;h1&gt;Главный заголовок&lt;/h1&gt;
+&lt;h2&gt;Подзаголовок&lt;/h2&gt;
+&lt;h3&gt;Меньший заголовок&lt;/h3&gt;</pre>
+    <p><strong>Результат:</strong></p>
+    <h1>Главный заголовок</h1>
+    <h2>Подзаголовок</h2>
+    <h3>Меньший заголовок</h3>
+    <hr>
+
+    <h3>&lt;p&gt;</h3>
+    <p><strong>Описание:</strong> Абзац текста с отступами сверху и снизу.</p>
+    <p><strong>Атрибуты:</strong> Нет</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;p&gt;Это первый абзац текста.&lt;/p&gt;
+&lt;p&gt;Это второй абзац с дополнительной информацией.&lt;/p&gt;</pre>
+    <p><strong>Результат:</strong></p>
+    <p>Это первый абзац текста.</p>
+    <p>Это второй абзац с дополнительной информацией.</p>
+    <hr>
+
+    <h3>&lt;strong&gt;</h3>
+    <p><strong>Описание:</strong> Важный текст с сильным акцентом. Жирное начертание.</p>
+    <p><strong>Атрибуты:</strong> Нет</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>Это &lt;strong&gt;очень важный&lt;/strong&gt; текст.</pre>
+    <p><strong>Результат:</strong> Это <strong>очень важный</strong> текст.</p>
+    <hr>
+
+    <h3>&lt;em&gt;</h3>
+    <p><strong>Описание:</strong> Выделяет важный текст курсивом.</p>
+    <p><strong>Атрибуты:</strong> Нет</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>Это &lt;em&gt;выделенный&lt;/em&gt; текст.</pre>
+    <p><strong>Результат:</strong> Это <em>выделенный</em> текст.</p>
+    <hr>
+
+    <h3>&lt;br&gt;</h3>
+    <p><strong>Описание:</strong> Перенос строки без создания нового абзаца.</p>
+    <p><strong>Атрибуты:</strong> Нет</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>Первая строка&lt;br&gt;
+Вторая строка&lt;br&gt;
+Третья строка</pre>
+    <p><strong>Результат:</strong> Первая строка<br>
+    Вторая строка<br>
+    Третья строка</p>
+    <hr>
+
+    <h2>🖼️ Медиа и ссылки</h2>
+
+    <h3>&lt;a&gt;</h3>
+    <p><strong>Описание:</strong> Создаёт гипертекстовые ссылки.</p>
+    <p><strong>Атрибуты:</strong> href (обязательный), target, download</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;a href="https://example.com" target="_blank"&gt;Посетите сайт&lt;/a&gt;
+&lt;a href="mailto:email@example.com"&gt;Написать письмо&lt;/a&gt;</pre>
+    <p><strong>Результат:</strong> 
+    <a href="https://example.com" target="_blank">Посетите сайт</a><br>
+    <a href="mailto:email@example.com">Написать письмо</a></p>
+    <hr>
+
+    <h3>&lt;img&gt;</h3>
+    <p><strong>Описание:</strong> Вставляет изображение.</p>
+    <p><strong>Атрибуты:</strong> src (обязательный), alt (обязательный), width, height</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;img src="https://via.placeholder.com/150" alt="Пример изображения" width="150" height="150"&gt;</pre>
+    <p><strong>Результат:</strong><br>
+    <img src="https://via.placeholder.com/150" alt="Пример изображения" width="150" height="150"></p>
+    <hr>
+
+    <h2>📊 Формы и ввод данных</h2>
+
+    <h3>&lt;form&gt;</h3>
+    <p><strong>Описание:</strong> Форма для отправки данных на сервер.</p>
+    <p><strong>Атрибуты:</strong> action (обязательный), method, enctype</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;form action="/submit" method="post"&gt;
+    &lt;label&gt;Имя: &lt;input type="text" name="name"&gt;&lt;/label&gt;&lt;br&gt;
+    &lt;label&gt;Email: &lt;input type="email" name="email"&gt;&lt;/label&gt;&lt;br&gt;
+    &lt;button type="submit"&gt;Отправить&lt;/button&gt;
+&lt;/form&gt;</pre>
+    <p><strong>Результат:</strong></p>
+    <form action="/submit" method="post">
+        <label>Имя: <input type="text" name="name"></label><br>
+        <label>Email: <input type="email" name="email"></label><br>
+        <button type="submit">Отправить</button>
+    </form>
+    <hr>
+
+    <h3>&lt;input&gt;</h3>
+    <p><strong>Описание:</strong> Поле для ввода данных разных типов.</p>
+    <p><strong>Атрибуты:</strong> type, name, value, placeholder, required</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>Имя: &lt;input type="text" placeholder="Введите имя"&gt;&lt;br&gt;
+Пароль: &lt;input type="password"&gt;&lt;br&gt;
+Чекбокс: &lt;input type="checkbox"&gt;</pre>
+    <p><strong>Результат:</strong><br>
+    Имя: <input type="text" placeholder="Введите имя"><br>
+    Пароль: <input type="password"><br>
+    Чекбокс: <input type="checkbox"></p>
+    <hr>
+
+    <h3>&lt;button&gt;</h3>
+    <p><strong>Описание:</strong> Создает интерактивную кнопку.</p>
+    <p><strong>Атрибуты:</strong> type, disabled</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;button type="button"&gt;Обычная кнопка&lt;/button&gt;
+&lt;button type="submit"&gt;Отправить&lt;/button&gt;
+&lt;button disabled&gt;Неактивная кнопка&lt;/button&gt;</pre>
+    <p><strong>Результат:</strong><br>
+    <button type="button">Обычная кнопка</button>
+    <button type="submit">Отправить</button>
+    <button disabled>Неактивная кнопка</button></p>
+    <hr>
+
+    <h2>🏗️ Структурные теги</h2>
+
+    <h3>&lt;div&gt;</h3>
+    <p><strong>Описание:</strong> Универсальный блочный контейнер для группировки элементов.</p>
+    <p><strong>Атрибуты:</strong> Нет</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;div style="background: #f0f0f0; padding: 10px;"&gt;
+    &lt;h3&gt;Заголовок в контейнере&lt;/h3&gt;
+    &lt;p&gt;Текст внутри div&lt;/p&gt;
+&lt;/div&gt;</pre>
+    <p><strong>Результат:</strong></p>
+    <div style="background: #f0f0f0; padding: 10px;">
+        <h3>Заголовок в контейнере</h3>
+        <p>Текст внутри div</p>
     </div>
+    <hr>
 
-    <script src="script.js"></script>
+    <h3>&lt;header&gt;</h3>
+    <p><strong>Описание:</strong> Вводная часть страницы или раздела.</p>
+    <p><strong>Атрибуты:</strong> Нет</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;header&gt;
+    &lt;h1&gt;Название сайта&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;a href="/"&gt;Главная&lt;/a&gt;
+        &lt;a href="/about"&gt;О нас&lt;/a&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;</pre>
+    <p><strong>Результат:</strong></p>
+    <header style="background: #e0e0e0; padding: 10px;">
+        <h1 style="margin: 0;">Название сайта</h1>
+        <nav>
+            <a href="/">Главная</a> |
+            <a href="/about">О нас</a>
+        </nav>
+    </header>
+    <hr>
+
+    <h3>&lt;footer&gt;</h3>
+    <p><strong>Описание:</strong> Нижний колонтитул документа или раздела.</p>
+    <p><strong>Атрибуты:</strong> Нет</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;footer&gt;
+    &lt;p&gt;© 2024 Компания. Все права защищены.&lt;/p&gt;
+    &lt;p&gt;Контакты: email@example.com&lt;/p&gt;
+&lt;/footer&gt;</pre>
+    <p><strong>Результат:</strong></p>
+    <footer style="background: #e0e0e0; padding: 10px; margin-top: 20px;">
+        <p>© 2024 Компания. Все права защищены.</p>
+        <p>Контакты: email@example.com</p>
+    </footer>
+    <hr>
+
+    <h2>📋 Списки</h2>
+
+    <h3>&lt;ul&gt; и &lt;li&gt;</h3>
+    <p><strong>Описание:</strong> Маркированный список и его элементы.</p>
+    <p><strong>Атрибуты:</strong> Нет</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;ul&gt;
+    &lt;li&gt;Первый пункт&lt;/li&gt;
+    &lt;li&gt;Второй пункт&lt;/li&gt;
+    &lt;li&gt;Третий пункт&lt;/li&gt;
+&lt;/ul&gt;</pre>
+    <p><strong>Результат:</strong></p>
+    <ul>
+        <li>Первый пункт</li>
+        <li>Второй пункт</li>
+        <li>Третий пункт</li>
+    </ul>
+    <hr>
+
+    <h3>&lt;ol&gt; и &lt;li&gt;</h3>
+    <p><strong>Описание:</strong> Нумерованный список и его элементы.</p>
+    <p><strong>Атрибуты:</strong> type, start</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;ol&gt;
+    &lt;li&gt;Первый пункт&lt;/li&gt;
+    &lt;li&gt;Второй пункт&lt;/li&gt;
+    &lt;li&gt;Третий пункт&lt;/li&gt;
+&lt;/ol&gt;</pre>
+    <p><strong>Результат:</strong></p>
+    <ol>
+        <li>Первый пункт</li>
+        <li>Вторый пункт</li>
+        <li>Третий пункт</li>
+    </ol>
+    <hr>
+
+    <h2>📊 Таблицы</h2>
+
+    <h3>&lt;table&gt;, &lt;tr&gt;, &lt;td&gt;, &lt;th&gt;</h3>
+    <p><strong>Описание:</strong> Таблица, строки, ячейки и заголовки.</p>
+    <p><strong>Атрибуты:</strong> border, colspan, rowspan</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;table border="1"&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Имя&lt;/th&gt;
+        &lt;th&gt;Возраст&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Иван&lt;/td&gt;
+        &lt;td&gt;25&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Мария&lt;/td&gt;
+        &lt;td&gt;30&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</pre>
+    <p><strong>Результат:</strong></p>
+    <table border="1">
+        <tr>
+            <th>Имя</th>
+            <th>Возраст</th>
+        </tr>
+        <tr>
+            <td>Иван</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>Мария</td>
+            <td>30</td>
+        </tr>
+    </table>
+    <hr>
+
+    <h2>⚙️ Служебные теги</h2>
+
+    <h3>&lt;meta&gt;</h3>
+    <p><strong>Описание:</strong> Предоставляет метаданные о документе.</p>
+    <p><strong>Атрибуты:</strong> charset, name, content</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;meta charset="UTF-8"&gt;
+&lt;meta name="description" content="Описание страницы"&gt;
+&lt;meta name="keywords" content="HTML, CSS, JavaScript"&gt;</pre>
+    <p><strong>Результат:</strong> Не отображается на странице, используется браузером и поисковыми системами</p>
+    <hr>
+
+    <h3>&lt;link&gt;</h3>
+    <p><strong>Описание:</strong> Подключает внешние ресурсы к документу.</p>
+    <p><strong>Атрибуты:</strong> rel (обязательный), href (обязательный)</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;link rel="stylesheet" href="style.css"&gt;
+&lt;link rel="icon" href="favicon.ico"&gt;</pre>
+    <p><strong>Результат:</strong> Подключает CSS стили и фавиконку</p>
+    <hr>
+
+    <h3>&lt;script&gt;</h3>
+    <p><strong>Описание:</strong> Подключает или содержит JavaScript-код.</p>
+    <p><strong>Атрибуты:</strong> src, type</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;script&gt;
+    console.log("Hello, World!");
+&lt;/script&gt;
+&lt;script src="script.js"&gt;&lt;/script&gt;</pre>
+    <p><strong>Результат:</strong> Выполняет JavaScript код</p>
+    <hr>
+
+    <h3>&lt;style&gt;</h3>
+    <p><strong>Описание:</strong> Встроенные CSS-стили.</p>
+    <p><strong>Атрибуты:</strong> type</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;style&gt;
+    body { font-family: Arial; }
+    h1 { color: blue; }
+&lt;/style&gt;</pre>
+    <p><strong>Результат:</strong> Применяет стили к элементам страницы</p>
+    <hr>
+
+    <h2>💬 Комментарии</h2>
+
+    <h3>&lt;!-- ... --&gt;</h3>
+    <p><strong>Описание:</strong> Комментарий в коде - не отображается на странице.</p>
+    <p><strong>Атрибуты:</strong> Нет</p>
+    <p><strong>Пример кода:</strong></p>
+    <pre>&lt;!-- Это комментарий, он не виден пользователю --&gt;
+&lt;div&gt;Видимый контент&lt;/div&gt;
+&lt;!-- 
+    Многострочный
+    комментарий
+--&gt;</pre>
+    <p><strong>Результат:</strong> Комментарии игнорируются браузером</p>
+    <hr>
+
+    <footer>
+        <p><strong>📚 Полный справочник HTML тегов</strong></p>
+        <p>Содержит основные теги с примерами и результатами их работы.</p>
+    </footer>
+
 </body>
 </html>
