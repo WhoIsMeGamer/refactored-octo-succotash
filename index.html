@@ -3,376 +3,641 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>📚 Полный справочник HTML тегов</title>
+    <title>HTML Теги - Интерактивный справочник</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #fff, #e3f2fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .search-box {
+            max-width: 500px;
+            margin: 30px auto;
+            position: relative;
+        }
+        
+        #searchInput {
+            width: 100%;
+            padding: 18px 50px 18px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            outline: none;
+            background: rgba(255,255,255,0.95);
+            transition: all 0.3s ease;
+        }
+        
+        #searchInput:focus {
+            transform: scale(1.02);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+            font-size: 20px;
+        }
+        
+        .tags-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .tag-card {
+            background: white;
+            border-radius: 20px;
+            padding: 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            border-left: 6px solid #667eea;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .tag-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .tag-card.active {
+            border-left-color: #ff6b6b;
+        }
+        
+        .tag-header {
+            padding: 25px;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+        }
+        
+        .tag-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #667eea;
+            font-family: 'Courier New', monospace;
+            flex: 1;
+        }
+        
+        .toggle-icon {
+            font-size: 1.2em;
+            color: #667eea;
+            transition: transform 0.3s ease;
+        }
+        
+        .tag-card.active .toggle-icon {
+            transform: rotate(180deg);
+            color: #ff6b6b;
+        }
+        
+        .tag-description {
+            color: #666;
+            line-height: 1.6;
+            padding: 0 25px 20px 25px;
+        }
+        
+        .tag-attributes {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 0 25px 20px 25px;
+            border-left: 4px solid #764ba2;
+        }
+        
+        .attributes-title {
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .attributes-list {
+            font-family: 'Courier New', monospace;
+            font-size: 0.92em;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .required {
+            font-weight: bold;
+            color: #e74c3c;
+            position: relative;
+        }
+        
+        .required::after {
+            content: "●";
+            color: #e74c3c;
+            font-size: 0.7em;
+            margin-left: 4px;
+        }
+        
+        .no-attributes {
+            color: #999;
+            font-style: italic;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .tag-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+        
+        .tag-card.active .tag-details {
+            max-height: 1000px;
+        }
+        
+        .detail-section {
+            padding: 20px 25px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .detail-section:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-title {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1em;
+        }
+        
+        .detail-content {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        
+        .code-comment {
+            color: #a0aec0;
+        }
+        
+        .category {
+            background: rgba(255,255,255,0.95);
+            padding: 25px 30px;
+            border-radius: 20px;
+            margin: 40px 0 30px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .category h2 {
+            color: #333;
+            font-size: 1.8em;
+            margin: 0;
+        }
+        
+        .category-icon {
+            font-size: 1.5em;
+            color: #667eea;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: white;
+            padding: 30px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .quick-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .tags-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            .stats {
+                gap: 15px;
+            }
+            
+            .stat-item {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>🚀 HTML Теги - Полный справочник</h1>
-    
-    <h2>📄 Основные теги документа</h2>
-    
-    <h3>&lt;!DOCTYPE&gt;</h3>
-    <p><strong>Описание:</strong> Объявляет тип документа и версию HTML. Должен быть первой строкой.</p>
-    <p><strong>Атрибуты:</strong> Нет</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Мой сайт&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    Содержимое страницы
-&lt;/body&gt;
-&lt;/html&gt;</pre>
-    <p><strong>Результат:</strong> Определяет документ как HTML5</p>
-    <hr>
+    <div class="container">
+        <header>
+            <h1>🚀 HTML Теги</h1>
+            <p class="subtitle">Интерактивный справочник с примерами и подробными описаниями</p>
+            
+            <div class="stats">
+                <div class="stat-item">📚 50+ тегов</div>
+                <div class="stat-item">🎯 С примерами кода</div>
+                <div class="stat-item">⚡ Быстрый поиск</div>
+                <div class="stat-item">📱 Адаптивный дизайн</div>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Начните вводить название тега...">
+                <div class="search-icon">🔍</div>
+            </div>
 
-    <h3>&lt;html&gt;</h3>
-    <p><strong>Описание:</strong> Корневой элемент всего HTML-документа.</p>
-    <p><strong>Атрибуты:</strong> lang</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;html lang="ru"&gt;
-&lt;head&gt;
-    &lt;title&gt;Заголовок&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    Контент страницы
-&lt;/body&gt;
-&lt;/html&gt;</pre>
-    <p><strong>Результат:</strong> Создает основу HTML документа</p>
-    <hr>
+            <div class="quick-nav">
+                <button class="nav-btn" onclick="scrollToCategory('basic')">📄 Основные</button>
+                <button class="nav-btn" onclick="scrollToCategory('text')">📝 Текст</button>
+                <button class="nav-btn" onclick="scrollToCategory('media')">🖼️ Медиа</button>
+                <button class="nav-btn" onclick="scrollToCategory('forms')">📊 Формы</button>
+                <button class="nav-btn" onclick="scrollToCategory('structure')">🏗️ Структура</button>
+            </div>
+        </header>
 
-    <h3>&lt;head&gt;</h3>
-    <p><strong>Описание:</strong> Служебный раздел с метаданными, заголовком, стилями, скриптами.</p>
-    <p><strong>Атрибуты:</strong> Нет</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;head&gt;
-    &lt;title&gt;Мой сайт&lt;/title&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;link rel="stylesheet" href="style.css"&gt;
-&lt;/head&gt;</pre>
-    <p><strong>Результат:</strong> Содержит служебную информацию о странице</p>
-    <hr>
+        <main>
+            <!-- Основные теги документа -->
+            <div class="category" id="basic">
+                <div class="category-header">
+                    <div class="category-icon">📄</div>
+                    <h2>Основные теги документа</h2>
+                </div>
+                <div class="tags-grid">
+                    <div class="tag-card" onclick="toggleTag(this)">
+                        <div class="tag-header">
+                            <div class="tag-name">&lt;!DOCTYPE&gt;</div>
+                            <div class="toggle-icon">▼</div>
+                        </div>
+                        <div class="tag-description">Объявляет тип документа и версию HTML. Должен быть первой строкой.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                        <div class="tag-details">
+                            <div class="detail-section">
+                                <div class="detail-title">💡 Подробности</div>
+                                <div class="detail-content">
+                                    Этот тег не является HTML-тегом, а инструкцией для браузера о версии HTML.
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">📝 Пример</div>
+                                <div class="code-example">
+                                    <span class="code-comment">&lt;!-- Объявление HTML5 --&gt;</span><br>
+                                    &lt;!DOCTYPE html&gt;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <h3>&lt;body&gt;</h3>
-    <p><strong>Описание:</strong> Тело документа - всё видимое содержимое страницы.</p>
-    <p><strong>Атрибуты:</strong> Нет</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;body&gt;
-    &lt;h1&gt;Добро пожаловать!&lt;/h1&gt;
-    &lt;p&gt;Это содержимое страницы.&lt;/p&gt;
-&lt;/body&gt;</pre>
-    <p><strong>Результат:</strong> Отображает основной контент страницы</p>
-    <hr>
+                    <div class="tag-card" onclick="toggleTag(this)">
+                        <div class="tag-header">
+                            <div class="tag-name">&lt;html&gt;</div>
+                            <div class="toggle-icon">▼</div>
+                        </div>
+                        <div class="tag-description">Корневой элемент всего HTML-документа.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">📎 Дополнительные теги:</div>
+                            <div class="attributes-list">lang</div>
+                        </div>
+                        <div class="tag-details">
+                            <div class="detail-section">
+                                <div class="detail-title">💡 Подробности</div>
+                                <div class="detail-content">
+                                    Содержит весь контент HTML-страницы. Атрибут lang помогает поисковым системам и скринридерам определить язык страницы.
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">📝 Пример</div>
+                                <div class="code-example">
+                                    &lt;html lang="ru"&gt;<br>
+                                    &nbsp;&nbsp;&lt;head&gt;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Моя страница&lt;/title&gt;<br>
+                                    &nbsp;&nbsp;&lt;/head&gt;<br>
+                                    &nbsp;&nbsp;&lt;body&gt;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;Содержимое страницы<br>
+                                    &nbsp;&nbsp;&lt;/body&gt;<br>
+                                    &lt;/html&gt;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <h2>📝 Текстовые теги</h2>
+            <!-- Текстовые теги -->
+            <div class="category" id="text">
+                <div class="category-header">
+                    <div class="category-icon">📝</div>
+                    <h2>Текстовые теги</h2>
+                </div>
+                <div class="tags-grid">
+                    <div class="tag-card" onclick="toggleTag(this)">
+                        <div class="tag-header">
+                            <div class="tag-name">&lt;h1&gt;-&lt;h6&gt;</div>
+                            <div class="toggle-icon">▼</div>
+                        </div>
+                        <div class="tag-description">Заголовки шести уровней. h1 - самый важный.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                        <div class="tag-details">
+                            <div class="detail-section">
+                                <div class="detail-title">💡 Подробности</div>
+                                <div class="detail-content">
+                                    Заголовки создают иерархию контента. h1 должен быть один на странице для SEO.
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">📝 Пример</div>
+                                <div class="code-example">
+                                    &lt;h1&gt;Главный заголовок&lt;/h1&gt;<br>
+                                    &lt;h2&gt;Подзаголовок&lt;/h2&gt;<br>
+                                    &lt;h3&gt;Меньший заголовок&lt;/h3&gt;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <h3>&lt;h1&gt; - &lt;h6&gt;</h3>
-    <p><strong>Описание:</strong> Заголовки шести уровней. h1 - самый важный.</p>
-    <p><strong>Атрибуты:</strong> Нет</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;h1&gt;Главный заголовок&lt;/h1&gt;
-&lt;h2&gt;Подзаголовок&lt;/h2&gt;
-&lt;h3&gt;Меньший заголовок&lt;/h3&gt;</pre>
-    <p><strong>Результат:</strong></p>
-    <h1>Главный заголовок</h1>
-    <h2>Подзаголовок</h2>
-    <h3>Меньший заголовок</h3>
-    <hr>
+                    <div class="tag-card" onclick="toggleTag(this)">
+                        <div class="tag-header">
+                            <div class="tag-name">&lt;p&gt;</div>
+                            <div class="toggle-icon">▼</div>
+                        </div>
+                        <div class="tag-description">Абзац текста с отступами сверху и снизу.</div>
+                        <div class="tag-attributes">
+                            <div class="no-attributes">Нет атрибутов</div>
+                        </div>
+                        <div class="tag-details">
+                            <div class="detail-section">
+                                <div class="detail-title">💡 Подробности</div>
+                                <div class="detail-content">
+                                    Блочный элемент для текстового контента. Автоматически добавляет отступы.
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">📝 Пример</div>
+                                <div class="code-example">
+                                    &lt;p&gt;Это первый абзац текста.&lt;/p&gt;<br>
+                                    &lt;p&gt;Это второй абзац с дополнительной информацией.&lt;/p&gt;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <h3>&lt;p&gt;</h3>
-    <p><strong>Описание:</strong> Абзац текста с отступами сверху и снизу.</p>
-    <p><strong>Атрибуты:</strong> Нет</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;p&gt;Это первый абзац текста.&lt;/p&gt;
-&lt;p&gt;Это второй абзац с дополнительной информацией.&lt;/p&gt;</pre>
-    <p><strong>Результат:</strong></p>
-    <p>Это первый абзац текста.</p>
-    <p>Это второй абзац с дополнительной информацией.</p>
-    <hr>
+            <!-- Медиа теги -->
+            <div class="category" id="media">
+                <div class="category-header">
+                    <div class="category-icon">🖼️</div>
+                    <h2>Медиа и ссылки</h2>
+                </div>
+                <div class="tags-grid">
+                    <div class="tag-card" onclick="toggleTag(this)">
+                        <div class="tag-header">
+                            <div class="tag-name">&lt;a&gt;</div>
+                            <div class="toggle-icon">▼</div>
+                        </div>
+                        <div class="tag-description">Создаёт гипертекстовые ссылки.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">📎 Дополнительные теги:</div>
+                            <div class="attributes-list"><span class="required">href</span>, target, download</div>
+                        </div>
+                        <div class="tag-details">
+                            <div class="detail-section">
+                                <div class="detail-title">💡 Подробности</div>
+                                <div class="detail-content">
+                                    Ссылки могут вести на другие страницы, файлы, якоря на текущей странице.
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🎯 Атрибуты</div>
+                                <div class="detail-content">
+                                    <strong>href</strong> - URL назначения (обязательный)<br>
+                                    <strong>target</strong> - где открыть (_blank, _self)<br>
+                                    <strong>download</strong> - скачать файл
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">📝 Пример</div>
+                                <div class="code-example">
+                                    <span class="code-comment">&lt;!-- Внешняя ссылка --&gt;</span><br>
+                                    &lt;a href="https://example.com" target="_blank"&gt;Посетите сайт&lt;/a&gt;<br><br>
+                                    <span class="code-comment">&lt;!-- Внутренняя ссылка --&gt;</span><br>
+                                    &lt;a href="#section1"&gt;Перейти к разделу 1&lt;/a&gt;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <h3>&lt;strong&gt;</h3>
-    <p><strong>Описание:</strong> Важный текст с сильным акцентом. Жирное начертание.</p>
-    <p><strong>Атрибуты:</strong> Нет</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>Это &lt;strong&gt;очень важный&lt;/strong&gt; текст.</pre>
-    <p><strong>Результат:</strong> Это <strong>очень важный</strong> текст.</p>
-    <hr>
+                    <div class="tag-card" onclick="toggleTag(this)">
+                        <div class="tag-header">
+                            <div class="tag-name">&lt;img&gt;</div>
+                            <div class="toggle-icon">▼</div>
+                        </div>
+                        <div class="tag-description">Вставляет изображение.</div>
+                        <div class="tag-attributes">
+                            <div class="attributes-title">📎 Дополнительные теги:</div>
+                            <div class="attributes-list"><span class="required">src</span>, alt, width, height, loading</div>
+                        </div>
+                        <div class="tag-details">
+                            <div class="detail-section">
+                                <div class="detail-title">💡 Подробности</div>
+                                <div class="detail-content">
+                                    Одиночный тег (не требует закрывающего). Атрибут alt обязателен для доступности.
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">🎯 Атрибуты</div>
+                                <div class="detail-content">
+                                    <strong>src</strong> - путь к изображению<br>
+                                    <strong>alt</strong> - альтернативный текст<br>
+                                    <strong>loading</strong> - lazy для отложенной загрузки
+                                </div>
+                            </div>
+                            <div class="detail-section">
+                                <div class="detail-title">📝 Пример</div>
+                                <div class="code-example">
+                                    &lt;img src="photo.jpg" alt="Описание фото" width="400" height="300" loading="lazy"&gt;
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <h3>&lt;em&gt;</h3>
-    <p><strong>Описание:</strong> Выделяет важный текст курсивом.</p>
-    <p><strong>Атрибуты:</strong> Нет</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>Это &lt;em&gt;выделенный&lt;/em&gt; текст.</pre>
-    <p><strong>Результат:</strong> Это <em>выделенный</em> текст.</p>
-    <hr>
+            <!-- Добавьте остальные категории по аналогии -->
+            
+        </main>
 
-    <h3>&lt;br&gt;</h3>
-    <p><strong>Описание:</strong> Перенос строки без создания нового абзаца.</p>
-    <p><strong>Атрибуты:</strong> Нет</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>Первая строка&lt;br&gt;
-Вторая строка&lt;br&gt;
-Третья строка</pre>
-    <p><strong>Результат:</strong> Первая строка<br>
-    Вторая строка<br>
-    Третья строка</p>
-    <hr>
-
-    <h2>🖼️ Медиа и ссылки</h2>
-
-    <h3>&lt;a&gt;</h3>
-    <p><strong>Описание:</strong> Создаёт гипертекстовые ссылки.</p>
-    <p><strong>Атрибуты:</strong> href (обязательный), target, download</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;a href="https://example.com" target="_blank"&gt;Посетите сайт&lt;/a&gt;
-&lt;a href="mailto:email@example.com"&gt;Написать письмо&lt;/a&gt;</pre>
-    <p><strong>Результат:</strong> 
-    <a href="https://example.com" target="_blank">Посетите сайт</a><br>
-    <a href="mailto:email@example.com">Написать письмо</a></p>
-    <hr>
-
-    <h3>&lt;img&gt;</h3>
-    <p><strong>Описание:</strong> Вставляет изображение.</p>
-    <p><strong>Атрибуты:</strong> src (обязательный), alt (обязательный), width, height</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;img src="https://via.placeholder.com/150" alt="Пример изображения" width="150" height="150"&gt;</pre>
-    <p><strong>Результат:</strong><br>
-    <img src="https://via.placeholder.com/150" alt="Пример изображения" width="150" height="150"></p>
-    <hr>
-
-    <h2>📊 Формы и ввод данных</h2>
-
-    <h3>&lt;form&gt;</h3>
-    <p><strong>Описание:</strong> Форма для отправки данных на сервер.</p>
-    <p><strong>Атрибуты:</strong> action (обязательный), method, enctype</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;form action="/submit" method="post"&gt;
-    &lt;label&gt;Имя: &lt;input type="text" name="name"&gt;&lt;/label&gt;&lt;br&gt;
-    &lt;label&gt;Email: &lt;input type="email" name="email"&gt;&lt;/label&gt;&lt;br&gt;
-    &lt;button type="submit"&gt;Отправить&lt;/button&gt;
-&lt;/form&gt;</pre>
-    <p><strong>Результат:</strong></p>
-    <form action="/submit" method="post">
-        <label>Имя: <input type="text" name="name"></label><br>
-        <label>Email: <input type="email" name="email"></label><br>
-        <button type="submit">Отправить</button>
-    </form>
-    <hr>
-
-    <h3>&lt;input&gt;</h3>
-    <p><strong>Описание:</strong> Поле для ввода данных разных типов.</p>
-    <p><strong>Атрибуты:</strong> type, name, value, placeholder, required</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>Имя: &lt;input type="text" placeholder="Введите имя"&gt;&lt;br&gt;
-Пароль: &lt;input type="password"&gt;&lt;br&gt;
-Чекбокс: &lt;input type="checkbox"&gt;</pre>
-    <p><strong>Результат:</strong><br>
-    Имя: <input type="text" placeholder="Введите имя"><br>
-    Пароль: <input type="password"><br>
-    Чекбокс: <input type="checkbox"></p>
-    <hr>
-
-    <h3>&lt;button&gt;</h3>
-    <p><strong>Описание:</strong> Создает интерактивную кнопку.</p>
-    <p><strong>Атрибуты:</strong> type, disabled</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;button type="button"&gt;Обычная кнопка&lt;/button&gt;
-&lt;button type="submit"&gt;Отправить&lt;/button&gt;
-&lt;button disabled&gt;Неактивная кнопка&lt;/button&gt;</pre>
-    <p><strong>Результат:</strong><br>
-    <button type="button">Обычная кнопка</button>
-    <button type="submit">Отправить</button>
-    <button disabled>Неактивная кнопка</button></p>
-    <hr>
-
-    <h2>🏗️ Структурные теги</h2>
-
-    <h3>&lt;div&gt;</h3>
-    <p><strong>Описание:</strong> Универсальный блочный контейнер для группировки элементов.</p>
-    <p><strong>Атрибуты:</strong> Нет</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;div style="background: #f0f0f0; padding: 10px;"&gt;
-    &lt;h3&gt;Заголовок в контейнере&lt;/h3&gt;
-    &lt;p&gt;Текст внутри div&lt;/p&gt;
-&lt;/div&gt;</pre>
-    <p><strong>Результат:</strong></p>
-    <div style="background: #f0f0f0; padding: 10px;">
-        <h3>Заголовок в контейнере</h3>
-        <p>Текст внутри div</p>
+        <footer>
+            <p>🎯 HTML Теги &copy; 2024 - Интерактивный справочник для разработчиков</p>
+            <p>💡 Нажмите на любой тег для получения подробной информации</p>
+        </footer>
     </div>
-    <hr>
 
-    <h3>&lt;header&gt;</h3>
-    <p><strong>Описание:</strong> Вводная часть страницы или раздела.</p>
-    <p><strong>Атрибуты:</strong> Нет</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;header&gt;
-    &lt;h1&gt;Название сайта&lt;/h1&gt;
-    &lt;nav&gt;
-        &lt;a href="/"&gt;Главная&lt;/a&gt;
-        &lt;a href="/about"&gt;О нас&lt;/a&gt;
-    &lt;/nav&gt;
-&lt;/header&gt;</pre>
-    <p><strong>Результат:</strong></p>
-    <header style="background: #e0e0e0; padding: 10px;">
-        <h1 style="margin: 0;">Название сайта</h1>
-        <nav>
-            <a href="/">Главная</a> |
-            <a href="/about">О нас</a>
-        </nav>
-    </header>
-    <hr>
+    <script>
+        // Функция для переключения аккордеона
+        function toggleTag(card) {
+            const isActive = card.classList.contains('active');
+            
+            // Закрываем все открытые карточки
+            document.querySelectorAll('.tag-card.active').forEach(activeCard => {
+                if (activeCard !== card) {
+                    activeCard.classList.remove('active');
+                }
+            });
+            
+            // Переключаем текущую карточку
+            card.classList.toggle('active', !isActive);
+        }
 
-    <h3>&lt;footer&gt;</h3>
-    <p><strong>Описание:</strong> Нижний колонтитул документа или раздела.</p>
-    <p><strong>Атрибуты:</strong> Нет</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;footer&gt;
-    &lt;p&gt;© 2024 Компания. Все права защищены.&lt;/p&gt;
-    &lt;p&gt;Контакты: email@example.com&lt;/p&gt;
-&lt;/footer&gt;</pre>
-    <p><strong>Результат:</strong></p>
-    <footer style="background: #e0e0e0; padding: 10px; margin-top: 20px;">
-        <p>© 2024 Компания. Все права защищены.</p>
-        <p>Контакты: email@example.com</p>
-    </footer>
-    <hr>
+        // Поиск по тегам
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const tagCards = document.querySelectorAll('.tag-card');
+            let foundCount = 0;
+            
+            tagCards.forEach(card => {
+                const tagName = card.querySelector('.tag-name').textContent.toLowerCase();
+                const tagDescription = card.querySelector('.tag-description').textContent.toLowerCase();
+                
+                if (tagName.includes(searchTerm) || tagDescription.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    foundCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
 
-    <h2>📋 Списки</h2>
+        // Плавная прокрутка к категориям
+        function scrollToCategory(categoryId) {
+            const element = document.getElementById(categoryId);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
 
-    <h3>&lt;ul&gt; и &lt;li&gt;</h3>
-    <p><strong>Описание:</strong> Маркированный список и его элементы.</p>
-    <p><strong>Атрибуты:</strong> Нет</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;ul&gt;
-    &lt;li&gt;Первый пункт&lt;/li&gt;
-    &lt;li&gt;Второй пункт&lt;/li&gt;
-    &lt;li&gt;Третий пункт&lt;/li&gt;
-&lt;/ul&gt;</pre>
-    <p><strong>Результат:</strong></p>
-    <ul>
-        <li>Первый пункт</li>
-        <li>Второй пункт</li>
-        <li>Третий пункт</li>
-    </ul>
-    <hr>
-
-    <h3>&lt;ol&gt; и &lt;li&gt;</h3>
-    <p><strong>Описание:</strong> Нумерованный список и его элементы.</p>
-    <p><strong>Атрибуты:</strong> type, start</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;ol&gt;
-    &lt;li&gt;Первый пункт&lt;/li&gt;
-    &lt;li&gt;Второй пункт&lt;/li&gt;
-    &lt;li&gt;Третий пункт&lt;/li&gt;
-&lt;/ol&gt;</pre>
-    <p><strong>Результат:</strong></p>
-    <ol>
-        <li>Первый пункт</li>
-        <li>Вторый пункт</li>
-        <li>Третий пункт</li>
-    </ol>
-    <hr>
-
-    <h2>📊 Таблицы</h2>
-
-    <h3>&lt;table&gt;, &lt;tr&gt;, &lt;td&gt;, &lt;th&gt;</h3>
-    <p><strong>Описание:</strong> Таблица, строки, ячейки и заголовки.</p>
-    <p><strong>Атрибуты:</strong> border, colspan, rowspan</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;table border="1"&gt;
-    &lt;tr&gt;
-        &lt;th&gt;Имя&lt;/th&gt;
-        &lt;th&gt;Возраст&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;Иван&lt;/td&gt;
-        &lt;td&gt;25&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;Мария&lt;/td&gt;
-        &lt;td&gt;30&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;</pre>
-    <p><strong>Результат:</strong></p>
-    <table border="1">
-        <tr>
-            <th>Имя</th>
-            <th>Возраст</th>
-        </tr>
-        <tr>
-            <td>Иван</td>
-            <td>25</td>
-        </tr>
-        <tr>
-            <td>Мария</td>
-            <td>30</td>
-        </tr>
-    </table>
-    <hr>
-
-    <h2>⚙️ Служебные теги</h2>
-
-    <h3>&lt;meta&gt;</h3>
-    <p><strong>Описание:</strong> Предоставляет метаданные о документе.</p>
-    <p><strong>Атрибуты:</strong> charset, name, content</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;meta charset="UTF-8"&gt;
-&lt;meta name="description" content="Описание страницы"&gt;
-&lt;meta name="keywords" content="HTML, CSS, JavaScript"&gt;</pre>
-    <p><strong>Результат:</strong> Не отображается на странице, используется браузером и поисковыми системами</p>
-    <hr>
-
-    <h3>&lt;link&gt;</h3>
-    <p><strong>Описание:</strong> Подключает внешние ресурсы к документу.</p>
-    <p><strong>Атрибуты:</strong> rel (обязательный), href (обязательный)</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;link rel="stylesheet" href="style.css"&gt;
-&lt;link rel="icon" href="favicon.ico"&gt;</pre>
-    <p><strong>Результат:</strong> Подключает CSS стили и фавиконку</p>
-    <hr>
-
-    <h3>&lt;script&gt;</h3>
-    <p><strong>Описание:</strong> Подключает или содержит JavaScript-код.</p>
-    <p><strong>Атрибуты:</strong> src, type</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;script&gt;
-    console.log("Hello, World!");
-&lt;/script&gt;
-&lt;script src="script.js"&gt;&lt;/script&gt;</pre>
-    <p><strong>Результат:</strong> Выполняет JavaScript код</p>
-    <hr>
-
-    <h3>&lt;style&gt;</h3>
-    <p><strong>Описание:</strong> Встроенные CSS-стили.</p>
-    <p><strong>Атрибуты:</strong> type</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;style&gt;
-    body { font-family: Arial; }
-    h1 { color: blue; }
-&lt;/style&gt;</pre>
-    <p><strong>Результат:</strong> Применяет стили к элементам страницы</p>
-    <hr>
-
-    <h2>💬 Комментарии</h2>
-
-    <h3>&lt;!-- ... --&gt;</h3>
-    <p><strong>Описание:</strong> Комментарий в коде - не отображается на странице.</p>
-    <p><strong>Атрибуты:</strong> Нет</p>
-    <p><strong>Пример кода:</strong></p>
-    <pre>&lt;!-- Это комментарий, он не виден пользователю --&gt;
-&lt;div&gt;Видимый контент&lt;/div&gt;
-&lt;!-- 
-    Многострочный
-    комментарий
---&gt;</pre>
-    <p><strong>Результат:</strong> Комментарии игнорируются браузером</p>
-    <hr>
-
-    <footer>
-        <p><strong>📚 Полный справочник HTML тегов</strong></p>
-        <p>Содержит основные теги с примерами и результатами их работы.</p>
-    </footer>
-
+        // Закрытие карточек при клике вне их
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.tag-card')) {
+                document.querySelectorAll('.tag-card.active').forEach(card => {
+                    card.classList.remove('active');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
