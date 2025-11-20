@@ -4006,12 +4006,19 @@
         function toggleTag(card) {
             const isActive = card.classList.contains('active');
             
-            // Закрываем все открытые карточки
-            document.querySelectorAll('.tag-card.active').forEach(activeCard => {
-                if (activeCard !== card) {
-                    activeCard.classList.remove('active');
-                }
-            });
+<script>
+function toggleTag(card) {
+    // Закрываем все активные карточки
+    document.querySelectorAll('.tag-card.active').forEach(function(activeCard) {
+        if (activeCard !== card) {
+            activeCard.classList.remove('active');
+        }
+    });
+
+    // Переключаем класс active только на текущей карточке
+    card.classList.toggle('active');
+}
+</script>
             
             // Переключаем текущую карточку
             card.classList.toggle('active', !isActive);
