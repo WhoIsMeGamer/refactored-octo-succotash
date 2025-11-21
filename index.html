@@ -4002,24 +4002,21 @@
     </div>
 
 <script>
-    // Функция для переключения аккордеона - ИСПРАВЛЕННАЯ ВЕРСИЯ
+    // Функция для переключения аккордеона - РАБОЧАЯ ВЕРСИЯ
     function toggleTag(card) {
-        // Закрываем все активные карточки
-        document.querySelectorAll('.tag-card.active').forEach(function(activeCard) {
-            if (activeCard !== card) {
-                activeCard.classList.remove('active');
-            }
+        // Закрываем ВСЕ карточки
+        document.querySelectorAll('.tag-card').forEach(otherCard => {
+            otherCard.classList.remove('active');
         });
-
-        // Переключаем класс active только на текущей карточке
-        card.classList.toggle('active');
+        
+        // Открываем ТОЛЬКО эту карточку
+        card.classList.add('active');
     }
 
-    // Поиск по тегам
+    // Остальной код без изменений
     document.getElementById('searchInput').addEventListener('input', function(e) {
         const searchTerm = e.target.value.toLowerCase();
         const tagCards = document.querySelectorAll('.tag-card');
-        let foundCount = 0;
         
         tagCards.forEach(card => {
             const tagName = card.querySelector('.tag-name').textContent.toLowerCase();
@@ -4027,14 +4024,12 @@
             
             if (tagName.includes(searchTerm) || tagDescription.includes(searchTerm)) {
                 card.style.display = 'block';
-                foundCount++;
             } else {
                 card.style.display = 'none';
             }
         });
     });
 
-    // Плавная прокрутка к категориям
     function scrollToCategory(categoryId) {
         const element = document.getElementById(categoryId);
         if (element) {
@@ -4045,7 +4040,6 @@
         }
     }
 
-    // Закрытие карточек при клике вне их
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.tag-card')) {
             document.querySelectorAll('.tag-card.active').forEach(card => {
@@ -4054,7 +4048,6 @@
         }
     });
 
-    // Подсчет общего количества тегов
     document.addEventListener('DOMContentLoaded', function() {
         const totalTags = document.querySelectorAll('.tag-card').length;
         document.getElementById('totalTags').textContent = totalTags;
@@ -4062,5 +4055,6 @@
 </script>
 </body>
 </html>
+
 
 
